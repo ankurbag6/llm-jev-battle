@@ -35,7 +35,7 @@ Each notebook runs on its own, so you don't need to run them in order.
    ANTHROPIC_API_KEY=...   # Part 3 only
    ```
 
-3. Open a notebook in VS Code or Jupyter and select the `.venv` kernel.
+3. Open a notebook in VS Code or Jupyter and select the `.venv` kernel. In VS Code, click the kernel name at the top right, choose **Select Another Kernel**, and pick `.venv`. If VS Code asks you to install `ipykernel`, you're on the wrong Python. Switch to `.venv` instead, which already has it.
 
 ## The battle (Part 3)
 
@@ -58,6 +58,32 @@ The notebook reports:
 - which messages each model got wrong
 
 Prices are hard-coded in the `PRICES` table in the notebook. Check them against each provider's pricing page before trusting the cost numbers.
+
+## Try it in the browser (Gradio app)
+
+Section 9 of [part3_battle.ipynb](part3_battle.ipynb) opens an app where you can test the models on your own messages:
+
+- Type a support message or click one of the 16 test-set examples.
+- Tick the models to run. They're called at the same time, so you only wait for the slowest one.
+- A table shows each model's 4 labels, time, cost per 1,000 messages, and any error.
+- A banner declares the winner:
+  - **Test-set message:** the model with the most correct labels wins. Ties go to the cheaper model, then the faster one. The correct labels are shown below the results.
+  - **Your own message:** there are no correct labels to check, so the banner names the fastest and cheapest models instead.
+
+To start it, run sections 0–3 of the notebook, then the section 9 cell. You don't need to run the full battle first. The app shows inside the notebook and also prints a local URL you can open in your browser. Each click makes real API calls, a fraction of a cent per model.
+
+## Project layout
+
+```
+part1_raw_http.ipynb   Part 1: raw HTTP
+part2_sdk.ipynb        Part 2: Python SDK
+part3_battle.ipynb     Part 3: battle + Gradio app
+assets/logos/          Jev, OpenAI and Claude logos used in the app
+requirements.txt       Python libraries
+.env                   your API keys (not committed)
+```
+
+The Claude and OpenAI icons come from [Simple Icons](https://simpleicons.org). The Jev icon comes from [typesafe.ai](https://typesafe.ai). Each logo is a trademark of its owner.
 
 ## License
 
