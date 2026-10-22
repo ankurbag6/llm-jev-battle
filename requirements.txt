@@ -1,0 +1,8 @@
+requests
+python-dotenv
+typesafe-sdk
+openai
+anthropic
+pydantic
+pandas
+ipykernel
